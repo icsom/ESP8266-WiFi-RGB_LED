@@ -1,8 +1,9 @@
 /**
  * Author: mosci
- * icsom@gmx.de
+ * contact: icsom@gmx.de
  * last edited: 01.03.2017
- *
+ * License: Beer ;-)
+
  * Wireless RGB-LED
  * This sketch turns the ESP-01 (hooked up with one or more NeoPixel on GPIO02)
  * into a wireless LED controlled the Android & Iphone app 'remoteXY'
