@@ -27,7 +27,7 @@ your wlan.
 * [WiFiManager Image 2](http://netz-weit.de/img_3090.png)
 
 Install the App from [RemoteXY](http://remotexy.com/en/download/)
-(The 'free version' of the RemoteXY-App will be enough for this sketch)
+(The 'free version' of the RemoteXY-App will be enough for this gimmick)
 Open the app, create a 'ethernet connection' to the IP-Address of the ESP8266
 and enjoy changing the colors.
 * [RemoteXY Image 1](http://netz-weit.de/img_3092.png)
