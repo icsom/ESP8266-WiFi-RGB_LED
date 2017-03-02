@@ -7,6 +7,7 @@ Additional Libraries:
 * adafruit neopixel:  https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation
 * wifimanager:        https://github.com/tzapu/WiFiManager
 * remotexy:           http://remotexy.com/en/help/how-install-library/
+
 (The 'free version' of the RemoteXY-App will be enough for this sketch)
 
 Compile & upload this sketch via the arduino-ide to your ESP8266 and Control
