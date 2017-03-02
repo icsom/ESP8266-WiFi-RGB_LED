@@ -1,7 +1,7 @@
 # ESP8266-WiFi-RGB_LED
 Control your NeoPixel-Rig via Smartphone / Tablet
 ![here should be a image](http://netz-weit.de/img_3072.jpg "ESP8266-01 with 7 RGB-LEDs hooked up")
-* [Fritzing Breadboard Picture](../fritzing_bb.png)
+* [Fritzing Breadboard Picture](https://github.com/icsom/ESP8266-WiFi-RGB_LED/blob/master/fritzing_bb.png)
 
 Components:
 * 7 LED 'Jewels' cost around 1-3$
