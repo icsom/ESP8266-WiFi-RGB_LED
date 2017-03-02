@@ -163,14 +163,14 @@ void changeColor(uint32_t newColor) {
 void setup() {
   EEPROM.begin(512);
   pixels.begin(); // This initializes the NeoPixel library.
-  changePixel(pixels.Color(0,0,0,50)); // change pixel  color.
-  delay(100);
+  changePixel(currColor); // red
+  pixels.show();
+  delay(BLINKINTERVAL);
 
   Serial.begin(115200);
-  Serial.setDebugOutput(true);
 
-  currColor=pixels.Color(0,0,0,20),
-  changePixel(currColor); // change pixel  color.
+  currColor=pixels.Color(0,0,0,20), //blue
+  changePixel(currColor); // change pixel color.
 
   //WiFiManager
   //Local intialization. Once its business is done, there is no need to keep it around
@@ -190,16 +190,9 @@ void setup() {
 
   //if you get here you have connected to the WiFi
 
-
   Serial.printf("connected to %s\n", con_ssid);
-  Serial.printf("def: %d\n", defaultColor);
-  EEPROM.get((512-32), defaultColor);
-  Serial.printf("<- store  def: %d\n",defaultColor);
-  currColor=defaultColor;
-  lastColor=defaultColor;
   Serial.println("local ip");
   Serial.println(WiFi.localIP());
-  changePixel(currColor);
 
   WiFi.SSID().toCharArray(con_ssid, 32);
   WiFi.psk().toCharArray(con_psk, 64);
@@ -208,23 +201,23 @@ void setup() {
   configTime(1 * 3600, 0, "pool.ntp.org", "time.nist.gov");
   Serial.println("Setup Done.");
 
-  Serial.printf("def: %d\n", defaultColor);
-  EEPROM.get((512-32), defaultColor);
-  Serial.printf("<- store  def: %d\n",defaultColor);
+  EEPROM.get((512-32), defaultColor); //get stored default color from eeprom
   currColor=defaultColor;
   lastColor=defaultColor;
+  changePixel(currColor); //show default color - we're going to the main loop now
 }
 
-/**
-  Sends a ping every 5 seconds, and handles reconnections
-*/
 void loop() {
-
+  //"get app-values" (simplyfied)
   RemoteXY_Handler ();
 
+  //app-switch is in position 'ON'
+  //show color generated from the values of the app-slider
   if (RemoteXY.switch1 == 1) {
     changePixel(currColor);
   }
+  //the switch has been turnd off & the last color was different from the defaultColor
+  //we will store the new defaultColor
   else if ( (RemoteXY.switch1 == 0) && (defaultColor != lastColor) ) {
       EEPROM.put((512-32), lastColor);
       EEPROM.commit();
@@ -233,8 +226,10 @@ void loop() {
       Serial.printf("-> store def: %d\n", lastColor);
       blinkPixel(2);
     }
+  //show defaultColor
   else if (RemoteXY.switch1 == 0) {
       changePixel(defaultColor);
     }
+  //take some rest
   delay(5);
 }
